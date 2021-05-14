@@ -12,49 +12,26 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-            <h1>URL Shrinker</h1>
-        </nav>
-    </header>
-    <main>
-        <div class="wrapper">
-            <form action="/shrink-url" name="urlForm" method="post">
-                <input type="url" name="ulr" placeholder="Enter you URL">
-                <button type="submit">Shrink</button>
-            </form>
-            <!-- <table>
-                <thead>
-                    <tr>
-                        <th>Full Url</th>
-                        <th>Short Url</th>
-                        <th>Clicks</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><a href="www.facebook.com">www.facebook.com</a></td>
-                        <td><a href="fb.com">fb.com</a></td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td><a href="www.facebook.com">www.facebook.com</a></td>
-                        <td><a href="fb.com">fb.com</a></td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td><a href="www.facebook.com">www.facebook.com</a></td>
-                        <td><a href="fb.com">fb.com</a></td>
-                        <td>0</td>
-                    </tr>
-                </tbody>
-            </table> -->
-    </main>
-    </div>
-    <footer>
-        <p>Made by <a class="my-portfolio-link" href="www.karkipramesh.com.np">Pramesh</a></p>
-    </footer>
+    <%- include("./includes/header.ejs") %>
+        <main>
+            <div class="wrapper">
+                <form action="/shrink-url" name="urlForm" method="post">
+                    <input type="url" name="url" required placeholder="Enter you URL" <% if(url){ %>value="<%=
+                        url.longURL %>"<%}%>>
+                            <button type="submit">Shrink</button>
+                </form>
+                <% if(url) { %>
+                    <div class="shorten-url">
+                        <p><a target="_blank" href="<%=url.shortURL %>">
+                                <%= url.shortURL %>
+                            </a></p>
+                    </div>
+                    <% } %>
+        </main>
+        </div>
+        <%- include("./includes/footer.ejs") %>
+
+
 </body>
 
 </html>
-

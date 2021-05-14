@@ -9,4 +9,8 @@ const router = express.Router();
 
 router.get("/", appController.getIndex);
 
+router.post("/shrink-url",appController.postShrinkUrl);
+
+router.get("/:urlID",appController.getRedirectUrl);
+
 module.exports = router;
